@@ -222,20 +222,20 @@ export default function Home() {
       {/* HERO */}
       <section className="relative overflow-hidden">
         <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-emerald-200/40 dark:bg-emerald-900/20 rounded-full blur-3xl" />
-        <div className="relative max-w-4xl mx-auto px-6 pt-20 pb-16 text-center animate-fade-in-up">
-          <span className="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-700 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-900/40 px-3 py-1 rounded-full mb-5">
+        <div className="relative max-w-5xl mx-auto px-6 pt-24 pb-20 text-center animate-fade-in-up">
+          <span className="inline-flex items-center gap-1.5 text-sm font-medium text-emerald-700 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-900/40 px-4 py-1.5 rounded-full mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> 100% pass rate · 12/12 eval prompts
           </span>
-          <h1 className="text-5xl font-bold text-zinc-900 dark:text-white tracking-tight leading-tight">
+          <h1 className="text-6xl md:text-7xl font-bold text-zinc-900 dark:text-white tracking-tight leading-tight">
             From idea to <span className="text-emerald-600 dark:text-emerald-400">validated AppSpec</span>
           </h1>
-          <p className="text-zinc-500 dark:text-zinc-400 mt-4 text-base max-w-xl mx-auto">
+          <p className="text-zinc-500 dark:text-zinc-400 mt-6 text-lg max-w-2xl mx-auto">
             OneAtlas turns a plain-language app description into a structured, machine-readable
             specification — with validation and repair built into every stage.
           </p>
           <a
             href="#generator"
-            className="inline-block mt-8 bg-gradient-to-r from-zinc-900 to-zinc-700 dark:from-emerald-600 dark:to-emerald-500 text-white text-sm font-medium px-7 py-3 rounded-full hover:shadow-lg hover:shadow-zinc-900/20 active:scale-[0.97] transition-all"
+            className="inline-block mt-10 bg-gradient-to-r from-zinc-900 to-zinc-700 dark:from-emerald-600 dark:to-emerald-500 text-white text-base font-medium px-8 py-3.5 rounded-full hover:shadow-lg hover:shadow-zinc-900/20 active:scale-[0.97] transition-all"
           >
             Try it now ↓
           </a>
@@ -243,50 +243,50 @@ export default function Home() {
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="max-w-4xl mx-auto px-6 py-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <section className="max-w-5xl mx-auto px-6 py-14">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
           {HOW_IT_WORKS.map((s, i) => (
             <div
               key={s.t}
-              className="group bg-white/80 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 rounded-2xl p-4 text-center shadow-sm cursor-default transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald-500/10 hover:border-emerald-300"
+              className="group bg-white/80 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 rounded-2xl p-6 text-center shadow-sm cursor-default transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald-500/10 hover:border-emerald-300"
             >
-              <div className="w-7 h-7 mx-auto rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 text-xs font-bold flex items-center justify-center mb-2 transition-transform duration-300 group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-white">
+              <div className="w-9 h-9 mx-auto rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 text-sm font-bold flex items-center justify-center mb-3 transition-transform duration-300 group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-white">
                 {i + 1}
               </div>
-              <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">{s.t}</p>
-              <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">{s.d}</p>
+              <p className="text-base font-semibold text-zinc-900 dark:text-zinc-100">{s.t}</p>
+              <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1.5">{s.d}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* FEATURES */}
-      <section className="max-w-4xl mx-auto px-6 py-10">
-        <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 mb-1">What powers it</h2>
-        <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-6">A pipeline built for reliability, not just output.</p>
-        <div className="grid sm:grid-cols-2 gap-4">
+      <section className="max-w-5xl mx-auto px-6 py-14">
+        <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100 mb-2">What powers it</h2>
+        <p className="text-base text-zinc-500 dark:text-zinc-400 mb-8">A pipeline built for reliability, not just output.</p>
+        <div className="grid sm:grid-cols-2 gap-5">
           {FEATURES.map((f) => (
             <div
               key={f.t}
-              className="bg-white/90 dark:bg-zinc-800/90 border border-zinc-200 dark:border-zinc-700 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-emerald-200 transition-all"
+              className="bg-white/90 dark:bg-zinc-800/90 border border-zinc-200 dark:border-zinc-700 rounded-2xl p-7 shadow-sm hover:shadow-md hover:border-emerald-200 transition-all"
             >
-              <div className="w-9 h-9 rounded-xl bg-emerald-50 dark:bg-emerald-900/40 flex items-center justify-center text-lg mb-3">
+              <div className="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-900/40 flex items-center justify-center text-2xl mb-4">
                 {f.icon}
               </div>
-              <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">{f.t}</h3>
-              <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1 leading-relaxed">{f.d}</p>
+              <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">{f.t}</h3>
+              <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1.5 leading-relaxed">{f.d}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* GENERATOR TOOL */}
-      <section id="generator" className="max-w-3xl mx-auto px-6 py-16 scroll-mt-16">
-        <div className="mb-8 flex items-start justify-between">
+      <section id="generator" className="max-w-4xl mx-auto px-6 py-20 scroll-mt-16">
+        <div className="mb-10 flex items-start justify-between">
           <div>
-            <p className="text-xs font-semibold tracking-widest text-emerald-600 dark:text-emerald-400 uppercase mb-2">Try It</p>
-            <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100 tracking-tight">AppSpec Generator</h2>
-            <p className="text-zinc-500 dark:text-zinc-400 mt-2 text-sm">
+            <p className="text-sm font-semibold tracking-widest text-emerald-600 dark:text-emerald-400 uppercase mb-2">Try It</p>
+            <h2 className="text-4xl font-bold text-zinc-900 dark:text-zinc-100 tracking-tight">AppSpec Generator</h2>
+            <p className="text-zinc-500 dark:text-zinc-400 mt-3 text-base">
               Describe an app in plain language. Get a validated, structured spec.
             </p>
           </div>
@@ -318,13 +318,13 @@ export default function Home() {
           )}
         </div>
 
-        <div className="bg-white/90 dark:bg-zinc-800/90 backdrop-blur-sm border border-zinc-200 dark:border-zinc-700 rounded-2xl p-5 shadow-lg shadow-zinc-900/5">
+        <div className="bg-white/90 dark:bg-zinc-800/90 backdrop-blur-sm border border-zinc-200 dark:border-zinc-700 rounded-2xl p-7 shadow-lg shadow-zinc-900/5">
           <textarea
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             placeholder="Build a CRM for a real estate agency. Agents manage leads, properties, and deals..."
             rows={5}
-            className="w-full resize-none text-sm text-zinc-800 dark:text-zinc-100 placeholder-zinc-400 bg-transparent focus:outline-none"
+            className="w-full resize-none text-base text-zinc-800 dark:text-zinc-100 placeholder-zinc-400 bg-transparent focus:outline-none"
           />
           <div className="flex flex-wrap gap-2 mt-3">
             {EXAMPLES.map((ex) => (
