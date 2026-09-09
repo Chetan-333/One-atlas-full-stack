@@ -1,0 +1,101 @@
+[
+  {
+    "type": "normal",
+    "prompt": "Build a CRM with login, contacts, payments, and admin analytics."
+  },
+
+  {
+    "type": "normal",
+    "prompt": "Build a learning management system for teachers and students with assignments and grading."
+  },
+
+  {
+    "type": "normal",
+    "prompt": "Build an inventory management system with suppliers, stock tracking, and sales reports."
+  },
+
+  {
+    "type": "normal",
+    "prompt": "Build a hospital management system with appointments, doctors, patients, and billing."
+  },
+
+  {
+    "type": "normal",
+    "prompt": "Build a blogging platform with authentication, comments, and categories."
+  },
+
+  {
+    "type": "normal",
+    "prompt": "Build a food delivery application with restaurants, orders, payments, and tracking."
+  },
+
+  {
+    "type": "normal",
+    "prompt": "Build a project management platform with tasks, deadlines, teams, and dashboards."
+  },
+
+  {
+    "type": "normal",
+    "prompt": "Build a fitness tracking application with workouts, progress analytics, and subscriptions."
+  },
+
+  {
+    "type": "normal",
+    "prompt": "Build an e-commerce platform with products, carts, payments, and order history."
+  },
+
+  {
+    "type": "normal",
+    "prompt": "Build a chat application with authentication, rooms, and message history."
+  },
+
+  {
+    "type": "edge_case",
+    "prompt": "Build me something cool."
+  },
+
+  {
+    "type": "edge_case",
+    "prompt": "Build an app with no login but role-based access."
+  },
+
+  {
+    "type": "edge_case",
+    "prompt": "Build a platform that is both fully public and completely private."
+  },
+
+  {
+    "type": "edge_case",
+    "prompt": "Build an app."
+  },
+
+  {
+    "type": "edge_case",
+    "prompt": "Create a dashboard with analytics but no data storage."
+  },
+
+  {
+    "type": "edge_case",
+    "prompt": "Build a payment system without users."
+  },
+
+  {
+    "type": "edge_case",
+    "prompt": "Build a multiplayer game with no players."
+  },
+
+  {
+    "type": "edge_case",
+    "prompt": "Build a social media app with messaging but no authentication."
+  },
+
+  {
+    "type": "edge_case",
+    "prompt": "Build a banking app where everyone has admin access."
+  },
+
+  {
+    "type": "edge_case",
+    "prompt": "Build a school management system but do not store students."
+  }
+]
