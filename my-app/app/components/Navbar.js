@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { getUser, logout } from "../lib/auth";
+import { getCurrentUser, signOut } from "../lib/auth";
 import { getTheme, applyTheme } from "../lib/theme";
 
 export default function Navbar() {
@@ -11,7 +11,7 @@ export default function Navbar() {
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {
-    setUser(getUser());
+    getCurrentUser().then(setUser);
     const t = getTheme();
     setTheme(t);
     applyTheme(t);
@@ -23,8 +23,8 @@ export default function Navbar() {
     applyTheme(next);
   }
 
-  function handleLogout() {
-    logout();
+  async function handleLogout() {
+    await signOut();
     router.push("/login");
   }
 

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { getUser } from "./lib/auth";
+import { getCurrentUser } from "./lib/auth";
 import { getHistory, addToHistory } from "./lib/history";
 import Navbar from "./components/Navbar";
 import ToastContainer from "./components/ToastContainer";
@@ -140,13 +140,14 @@ export default function Home() {
   const slowTimerRef = useRef(null);
 
   useEffect(() => {
-    const user = getUser();
-    if (!user) {
-      router.replace("/login");
-    } else {
-      setChecked(true);
-      setHistory(getHistory());
-    }
+    getCurrentUser().then((user) => {
+      if (!user) {
+        router.replace("/login");
+      } else {
+        setChecked(true);
+        setHistory(getHistory());
+      }
+    });
   }, [router]);
 
   function pushToast(message, type = "success") {
