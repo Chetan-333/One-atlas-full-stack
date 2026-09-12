@@ -6,6 +6,7 @@ import { getCurrentUser } from "./lib/auth";
 import { getHistory, addToHistory } from "./lib/history";
 import Navbar from "./components/Navbar";
 import ToastContainer from "./components/ToastContainer";
+import UIPreview from "./components/ui-preview/UIPreview";
 
 const API_URL = "https://oneatlas-trial.onrender.com";
 const STAGES = ["AppIntent", "DataSchema", "AppSpec", "Validation"];
@@ -282,8 +283,8 @@ export default function Home() {
       </section>
 
       {/* GENERATOR TOOL */}
-      <section id="generator" className="max-w-4xl mx-auto px-6 py-20 scroll-mt-16">
-        <div className="mb-10 flex items-start justify-between">
+      <section id="generator" className="max-w-4xl mx-auto px-6 py-24 scroll-mt-16">
+        <div className="mb-12 flex items-start justify-between">
           <div>
             <p className="text-sm font-semibold tracking-widest text-emerald-600 dark:text-emerald-400 uppercase mb-2">Try It</p>
             <h2 className="text-4xl font-bold text-zinc-900 dark:text-zinc-100 tracking-tight">AppSpec Generator</h2>
@@ -319,39 +320,68 @@ export default function Home() {
           )}
         </div>
 
-        <div className="bg-white/90 dark:bg-zinc-800/90 backdrop-blur-sm border border-zinc-200 dark:border-zinc-700 rounded-2xl p-7 shadow-lg shadow-zinc-900/5">
-          <textarea
-            value={prompt}
-            onChange={(e) => setPrompt(e.target.value)}
-            placeholder="Build a CRM for a real estate agency. Agents manage leads, properties, and deals..."
-            rows={5}
-            className="w-full resize-none text-base text-zinc-800 dark:text-zinc-100 placeholder-zinc-400 bg-transparent focus:outline-none"
-          />
-          <div className="flex flex-wrap gap-2 mt-3">
-            {EXAMPLES.map((ex) => (
-              <button
-                key={ex}
-                onClick={() => setPrompt(ex)}
-                className="text-xs px-3 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-300 hover:bg-emerald-100 hover:text-emerald-700 transition-colors"
-              >
-                {ex}
-              </button>
-            ))}
-          </div>
-          <div className="flex items-center justify-between mt-4">
-            <span className="text-xs text-zinc-400">
-              {status ? `Status: ${status}` : "Idle"}
-              {slowStart && loading && (
-                <span className="block text-amber-500 mt-1">Waking up the server — first request can take 20-30s…</span>
-              )}
-            </span>
-            <button
-              onClick={() => generate()}
-              disabled={loading || !prompt.trim()}
-              className="bg-gradient-to-r from-zinc-900 to-zinc-700 dark:from-emerald-600 dark:to-emerald-500 text-white text-sm font-medium px-6 py-2.5 rounded-full hover:shadow-lg hover:shadow-zinc-900/20 active:scale-[0.97] transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:shadow-none"
-            >
-              {loading ? "Generating…" : "Generate AppSpec"}
-            </button>
+        {/* glow behind the card */}
+        <div className="relative">
+          <div className="absolute -inset-6 bg-emerald-300/20 dark:bg-emerald-500/10 rounded-[40px] blur-2xl pointer-events-none" />
+
+          <div className="relative rounded-[28px] p-px bg-gradient-to-br from-emerald-400/70 via-zinc-200/60 to-emerald-300/40 dark:from-emerald-500/50 dark:via-zinc-700/60 dark:to-emerald-400/20 shadow-xl shadow-emerald-900/5">
+            <div className="rounded-[27px] bg-white/95 dark:bg-zinc-800/95 backdrop-blur-sm p-8">
+              <div className="flex items-center gap-3 mb-5">
+                <span className="w-9 h-9 shrink-0 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-white text-sm shadow-md shadow-emerald-500/30">
+                  ✦
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Describe your app</p>
+                  <p className="text-xs text-zinc-400">Plain English in — structured, validated AppSpec out</p>
+                </div>
+                <span className="ml-auto text-[11px] font-mono text-zinc-300 dark:text-zinc-600">
+                  {prompt.length}/2000
+                </span>
+              </div>
+
+              <div className="rounded-2xl border border-zinc-200 dark:border-zinc-700 focus-within:border-emerald-400 dark:focus-within:border-emerald-500 focus-within:ring-4 focus-within:ring-emerald-500/10 transition-all bg-zinc-50/60 dark:bg-zinc-900/40 p-5">
+                <textarea
+                  value={prompt}
+                  onChange={(e) => setPrompt(e.target.value)}
+                  placeholder="Build a CRM for a real estate agency. Agents manage leads, properties, and deals..."
+                  rows={5}
+                  maxLength={2000}
+                  className="w-full resize-none text-lg leading-relaxed text-zinc-800 dark:text-zinc-100 placeholder-zinc-400 bg-transparent focus:outline-none"
+                />
+              </div>
+
+              <div className="mt-5">
+                <p className="text-[11px] font-medium tracking-wide text-zinc-400 uppercase mb-2">Quick start</p>
+                <div className="flex flex-wrap gap-2">
+                  {EXAMPLES.map((ex) => (
+                    <button
+                      key={ex}
+                      onClick={() => setPrompt(ex)}
+                      className="group text-xs px-3.5 py-1.5 rounded-full border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 dark:hover:bg-emerald-900/30 dark:hover:text-emerald-300 transition-all"
+                    >
+                      <span className="text-emerald-500 mr-1 group-hover:translate-x-0.5 inline-block transition-transform">→</span>
+                      {ex}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between mt-6 pt-5 border-t border-zinc-100 dark:border-zinc-700/60">
+                <span className="text-xs text-zinc-400">
+                  {status ? `Status: ${status}` : "Idle"}
+                  {slowStart && loading && (
+                    <span className="block text-amber-500 mt-1">Waking up the server — first request can take 20-30s…</span>
+                  )}
+                </span>
+                <button
+                  onClick={() => generate()}
+                  disabled={loading || !prompt.trim()}
+                  className="bg-gradient-to-r from-zinc-900 to-zinc-700 dark:from-emerald-600 dark:to-emerald-500 text-white text-sm font-medium px-6 py-2.5 rounded-full hover:shadow-lg hover:shadow-emerald-900/20 active:scale-[0.97] transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:shadow-none"
+                >
+                  {loading ? "Generating…" : "✦ Generate AppSpec"}
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -391,6 +421,17 @@ export default function Home() {
                 ⬇ Download AppSpec
               </button>
             </div>
+            {result.appspec?.pages?.length > 0 && (
+              <div className="mb-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Live UI Preview</h3>
+                  <span className="text-[10px] text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 px-2 py-0.5 rounded-full">
+                    rendered client-side · 0 extra tokens
+                  </span>
+                </div>
+                <UIPreview appspec={result.appspec} dataSchema={result.data_schema} />
+              </div>
+            )}
             <div className="space-y-4">
               <JsonCard title="AppIntent" data={result.intent} />
               <JsonCard title="DataSchema" data={result.data_schema} />
