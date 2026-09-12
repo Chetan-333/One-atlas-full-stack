@@ -83,7 +83,7 @@ def generate_response(prompt: str, stage_name: str):
         fallback_provider = model_config.get("fallback")
 
         if fallback_provider == "groq":
-            return _call_groq_with_rotation(prompt, "llama-3.3-70b-versatile")
+            return _call_groq_with_rotation(prompt, "openai/gpt-oss-120b")
 
         if fallback_provider == "gemini":
             llm = get_gemini_model("gemini-2.5-flash")
